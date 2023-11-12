@@ -1,4 +1,4 @@
-exec_always autorandr --change
+exec_always --no-startup-id autorandr --change 
 
 set $mod Mod4
 
