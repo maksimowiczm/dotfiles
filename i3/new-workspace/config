@@ -1,0 +1,5 @@
+set $i3-new-workspace .config/i3/new-workspace/i3-new-workspace.sh
+
+bindsym $mod+n exec --no-startup-id $i3-new-workspace
+bindsym $mod+Shift+n exec --no-startup-id $i3-new-workspace -m
+bindsym $mod+Control+n exec --no-startup-id $i3-new-workspace -c
