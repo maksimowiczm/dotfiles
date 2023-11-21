@@ -144,6 +144,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-include ~/.config/i3/i3bar
+include i3bar.conf
 include media-keys.conf
 include new-workspace/config
