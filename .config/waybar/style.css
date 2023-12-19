@@ -16,19 +16,28 @@ window#waybar {
     font-family: "Ubuntu";
 }
 
+@define-color color-default rgb (130, 130, 130);
+@define-color color-visible rgb (255, 255, 255);
+@define-color color-urgent rgb (200, 0, 0);
+
 #workspaces button {
     padding: 0 5px;
     background: transparent;
-    color: white;
-    border-top: 2px solid transparent;
+    color: @color-default;
+    border-bottom: 2px solid #333;
 }
 
 #workspaces button.visible {
-    color: #c9545d;
-    border-top: 2px solid #c9545d;
+    color: @color-visible;
+    border-bottom: 2px solid @color-visible;
 }
 
-#clock, #battery, #pulseaudio, #tray {
+#workspaces button.urgent {
+    color: @color-urgent;
+    border-bottom: 2px solid @color-urgent;
+}
+
+#clock, #pulseaudio, #tray {
     padding: 0 3px;
     margin: 0 2px;
 }
