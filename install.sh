@@ -30,13 +30,16 @@ function install_paru()
         return
     fi
     
-    if rustup toolchain list | grep 'no installed toolchains'; then
+    if ! type rustup &> /dev/null && ask "Install rustup?"; then
+        echo "Installing rustup"
+        sudo pacman -S --needed --noconfirm rustup
+        elif rustup toolchain list | grep 'no installed toolchains'; then
         if ask "Install rustup toolchain stable?"; then
             rustup toolchain install stable
         fi
     fi
     
-    sudo pacman -S --needed base-devel
+    sudo pacman -S --needed --noconfirm base-devel
     git clone https://aur.archlinux.org/paru.git
     cd paru
     makepkg -si
@@ -84,7 +87,7 @@ fi
 
 # Install packages.txt
 if ask "Install packages?"; then
-    if ! $aur -S --needed --skipreview $(cat $DIR/packages.txt); then
+    if ! $aur -S --needed --skipreview --noconfirm $(cat $DIR/packages.txt); then
         exit 1
     fi
 fi
