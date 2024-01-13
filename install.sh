@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 quiet=false
 if [ "$1" = "all" ]; then
@@ -111,20 +111,23 @@ fi
 # zsh
 if ask "Setup zsh? This will override your configuration."; then
     # omz
+    echo "Installing Oh My Zsh"
     rm -rf ~/.oh-my-zsh
     git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh &> /dev/null
-    echo "Installing Oh My Zsh"
     
-    # zplug
-    rm -rf ~/.zplug
-    git clone https://github.com/zplug/zplug ~/.zplug &> /dev/null
-    echo "Installing zplug"
-    
+    echo "Seting up .zshrc"
     rm -rf ~/.zshrc
     cp $DIR/.zshrc ~/.zshrc
-    echo "Seting up .zshrc"
     
     if ! [ "$SHELL" = "/usr/bin/zsh" ];then
         chsh -s $(which zsh)
     fi
+    
+    # zplug
+    echo "Installing zplug"
+    rm -rf ~/.zplug
+    git clone https://github.com/zplug/zplug ~/.zplug &> /dev/null
+    source ~/.zshrc
+    zplug install
+    zplug load
 fi
