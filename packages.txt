@@ -1,6 +1,5 @@
 curl
 git
-zsh
 waybar
 otf-font-awesome
 hyprpaper
