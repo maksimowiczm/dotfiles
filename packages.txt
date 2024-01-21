@@ -1,10 +1,5 @@
-curl
-git
-waybar
 otf-font-awesome
-hyprpaper
 ttf-iosevka
 ttf-jetbrains-mono-nerd
 3270-fonts
-rustup
 autojump
