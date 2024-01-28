@@ -33,7 +33,7 @@ function install_paru()
     sudo pacman -S --needed --noconfirm base-devel git
     git clone https://aur.archlinux.org/paru.git
     cd paru
-    makepkg -si --noconfirm --needed 
+    makepkg -si --noconfirm --needed
     cd ..
     rm -rf paru
     
@@ -60,12 +60,12 @@ function install_zsh_config(){
     source ~/.zshrc
     
     info "Setting up OMZ plugins"
-
+    
     # install plugins
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
     curl -L https://git.io/auto-ls > ${ZSH_CUSTOM}/plugins/zsh-auto-ls
-
+    
     source ~/.zshrc
 }
 
@@ -84,39 +84,67 @@ function link_i3_config(){
     setup_symlink ".config/i3status"
 }
 
+function install_arch_packages(){
+    # install paru
+    if ! type paru &> /dev/null; then
+        install_paru
+        
+        if ! type paru &> /dev/null; then
+            error "Failed to install paru"
+            exit 1
+        fi
+    fi
+    
+    # install resources (fonts, zsh plugins dependencies)
+    info "Installing packages"
+    if ! paru -S --needed --skipreview --noconfirm $(cat $DIR/arch-packages.txt); then
+        error "Failed to install packages"
+        exit 1
+    fi
+}
+
 ################################################################################
 #####################################START######################################
 ################################################################################
 
-# install required packages
-sudo pacman -Syy
-sudo pacman -S --needed --noconfirm $(cat $DIR/required-packages.txt)
-mkdir ~/.config
+declare -A installers
+installers[arch]='install_arch_packages'
+installers[zsh]='install_zsh_config'
 
-# install paru
-if ! type paru &> /dev/null; then
-    install_paru
-    
-    if ! type paru &> /dev/null; then
-        install_paru
-        error "Failed to install paru"
-        exit 1
-    fi
-fi
+declare -A configs
+configs[kitty]='link_kitty_config'
+configs[hyprland]='link_hyprland_config'
+configs[i3]='link_i3_config'
 
-# install resources (fonts, zsh plugins dependencies)
-info "Installing packages"
-if ! paru -S --needed --skipreview --noconfirm $(cat $DIR/packages.txt); then
-    error "Failed to install packages"
+mkdir -p ~/.config
+
+if [[ $# -eq 0 ]]; then
+    error "Error: No arguments provided. Exiting."
     exit 1
 fi
 
-# install zsh plugins
-install_zsh_config
+if [ "$1" = "all" ]; then
+    for arg in "${installers[@]}"; do
+        $arg
+    done
+    for arg in "${configs[@]}"; do
+        $arg
+    done
+    
+    exit 0
+fi
 
-# copy configuration files
-link_hyprland_config
-link_kitty_config
-link_i3_config
+if [ "$1" = "config" ]; then
+    for arg in "${configs[@]}"; do
+        $arg
+    done
+    
+    exit 0
+fi
 
-echo "${BLUE}Run 'source ~/.zshrc' to activate in current terminal"
+for arg in "$@"; do
+    $installers[$arg]
+    $configs[$arg]
+done
+
+exit 0

@@ -1,5 +1,10 @@
+git
+curl
+base-devel
+
+autojump
+
 otf-font-awesome
 ttf-iosevka
 ttf-jetbrains-mono-nerd
 3270-fonts
-autojump
