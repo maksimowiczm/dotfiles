@@ -17,17 +17,11 @@ plugins=(
   # qol
   vi-mode
   autojump
+
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.zplug/init.zsh
-
-zplug "zsh-users/zsh-syntax-highlighting", from:github
-
-zplug "desyncr/auto-ls", from:github
-
-zplug "zsh-users/zsh-autosuggestions", as:plugin
-
-# zplug load --verbose
-zplug load
+source ${ZSH_CUSTOM}/plugins/zsh-auto-ls
