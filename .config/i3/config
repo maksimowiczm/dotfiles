@@ -1,8 +1,11 @@
 exec_always --no-startup-id autorandr --change 
+bindsym $mod+p exec autorandr --cycle
+
 
 set $mod Mod4
 
 font pango:Iosevka Medium 12
+exec --no-startup-id "setxkbmap -layout pl"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -17,9 +20,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
-exec feh --no-startup-id --bg-scale ~/.config/hypr/000000.jpg
+exec --no-startup-id feh --bg-scale ~/.config/i3/000000.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -30,6 +33,7 @@ tiling_drag modifier
 
 # start a terminal
 bindsym $mod+q exec kitty
+bindsym $mod+w exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
