@@ -25,3 +25,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 source ${ZSH_CUSTOM}/plugins/zsh-auto-ls
+
+source <(kubectl completion zsh)
+
+alias k="kubectl"
