@@ -5,6 +5,7 @@ bindsym $mod+p exec autorandr --cycle
 bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 set $mod Mod4
+set $terminal alacritty
 
 font pango:Iosevka Medium 12
 exec --no-startup-id "setxkbmap -layout pl"
@@ -34,8 +35,8 @@ floating_modifier $mod
 tiling_drag modifier
 
 # start a terminal
-bindsym $mod+q exec kitty
-bindsym $mod+w exec kitty
+bindsym $mod+q exec $terminal
+bindsym $mod+w exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
