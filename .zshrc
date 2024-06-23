@@ -26,16 +26,17 @@ zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-zinit light jeffreytse/zsh-vi-mode
+# zinit light jeffreytse/zsh-vi-mode # colides with keybinds, use omzp vi-mode instead
 zinit light desyncr/auto-ls
 AUTO_LS_NEWLINE=false
 
 # Add in snippets
 zinit snippet OMZP::git
+zinit snippet OMZP::tmux
+zinit snippet OMZP::vi-mode
 zinit snippet OMZP::colored-man-pages
 
 # Keybindings
-bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
@@ -52,6 +53,12 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
