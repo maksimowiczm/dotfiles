@@ -1,0 +1,21 @@
+live_config_reload = true
+
+[window]
+padding = {x = 5, y = 0}
+
+[font]
+normal = {family = "Iosevka", style = "Medium"}
+size = 20
+
+[cursor]
+style = {shape = "Beam", blinking = "Never"}
+thickness = 0.2
+unfocused_hollow = true
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [
+  {key = "V", mods = "Control", action = "Paste"},
+]
