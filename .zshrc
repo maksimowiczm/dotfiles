@@ -26,7 +26,8 @@ zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-# zinit light jeffreytse/zsh-vi-mode # colides with keybinds, use omzp vi-mode instead
+ZVM_INIT_MODE=sourcing
+zinit light jeffreytse/zsh-vi-mode
 zinit light desyncr/auto-ls
 AUTO_LS_NEWLINE=false
 
@@ -35,11 +36,15 @@ zinit snippet OMZP::git
 zinit snippet OMZP::tmux
 zinit snippet OMZP::vi-mode
 zinit snippet OMZP::colored-man-pages
+# ZSH_TMUX_AUTOSTART=true
+zinit snippet OMZP::tmux
 
 # Keybindings
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
 bindkey '^[w' kill-region
+bindkey '^x' autosuggest-clear
+bindkey '^d' forward-word
 
 # History
 HISTSIZE=5000
@@ -73,3 +78,4 @@ alias ll='ls -l'
 alias la='ls -a'
 alias c='clear'
 alias cd='z'
+alias cat='bat'
