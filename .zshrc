@@ -33,11 +33,10 @@ AUTO_LS_NEWLINE=false
 
 # Add in snippets
 zinit snippet OMZP::git
-zinit snippet OMZP::tmux
-zinit snippet OMZP::vi-mode
+# zinit snippet OMZP::vi-mode
 zinit snippet OMZP::colored-man-pages
 # ZSH_TMUX_AUTOSTART=true
-zinit snippet OMZP::tmux
+# zinit snippet OMZP::tmux
 
 # Keybindings
 bindkey '^p' history-beginning-search-backward
@@ -73,6 +72,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
 # Aliases
+alias ip='ip -c'
 alias ls='ls --color'
 alias ll='ls -l'
 alias la='ls -a'
