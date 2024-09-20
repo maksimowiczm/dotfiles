@@ -1,8 +1,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "JetBrainsMono NFM";
-    font-size: 13px;
+    font-family: "Iosevka Medium";
+    font-size: 15px;
     min-height: 0;
 }
 
@@ -19,6 +19,11 @@ window#waybar {
 @define-color color-default rgb (130, 130, 130);
 @define-color color-visible rgb (255, 255, 255);
 @define-color color-urgent rgb (200, 0, 0);
+
+#workspaces {
+  /* yeah... https://github.com/Alexays/Waybar/issues/1561 */
+  min-width: 1500px;
+}
 
 #workspaces button {
     padding: 0 5px;
