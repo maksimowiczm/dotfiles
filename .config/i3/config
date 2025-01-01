@@ -1,9 +1,12 @@
 exec_always --no-startup-id lxqt-policykit-agent
 exec_always --no-startup-id autorandr --change 
-bindsym $mod+p exec autorandr --cycle
-bindsym $mod+o exec autorandr off
+bindsym $mod+Shift+p exec autorandr --cycle
+bindsym $mod+Shift+o exec autorandr off
 
 bindsym Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+bindcode $mod+34 move workspace to output right
+bindcode $mod+35 move workspace to output left
 
 set $mod Mod4
 set $terminal alacritty
