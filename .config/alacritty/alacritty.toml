@@ -1,10 +1,10 @@
-live_config_reload = true
+general.live_config_reload = true
 
 [window]
 padding = {x = 5, y = 0}
 
 [font]
-normal = {family = "Iosevka", style = "Medium"}
+normal = {family = "Iosevka NF", style = "Medium"}
 size = 20
 
 [cursor]
