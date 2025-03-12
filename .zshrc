@@ -79,3 +79,6 @@ alias la='ls -a'
 alias c='clear'
 alias cd='z'
 alias cat='bat'
+
+alias nd='nix develop --command zsh'
+alias jf='just format'
