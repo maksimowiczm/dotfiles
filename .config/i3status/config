@@ -6,12 +6,15 @@ general {
     color_bad       = '#e89393'
 }
 
+order += "memory"
+order += "cpu_usage"
 order += "volume master"
 order += "tztime local"
-order += "battery all"
 
-battery all {
-    format = "%status %percentage (%remaining %consumption)"
+memory {
+        format = "%used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
 }
 
 tztime local {
