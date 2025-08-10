@@ -1,5 +1,8 @@
+exec --no-startup-id as-cmd -b
 exec_always --no-startup-id lxqt-policykit-agent
 exec_always --no-startup-id autorandr --change 
+exec --no-startup-id redshift -l 52:20 -t 6500:3000
+# exec --no-startup-id ./.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox
 bindsym $mod+Shift+p exec autorandr --cycle
 bindsym $mod+Shift+o exec autorandr off
 
@@ -12,7 +15,7 @@ set $mod Mod4
 set $terminal alacritty
 
 font pango:Iosevka Medium 12
-exec --no-startup-id "setxkbmap -layout pl"
+exec_always --no-startup-id "setxkbmap -layout pl"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -47,12 +50,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Iosevka'
+# bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Iosevka'
 # A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+bindsym $mod+d exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
