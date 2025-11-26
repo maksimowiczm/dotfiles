@@ -33,15 +33,11 @@ AUTO_LS_NEWLINE=false
 
 # Add in snippets
 zinit snippet OMZP::git
-# zinit snippet OMZP::vi-mode
 zinit snippet OMZP::colored-man-pages
-# ZSH_TMUX_AUTOSTART=true
-# zinit snippet OMZP::tmux
 
 # Keybindings
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
-bindkey '^[w' kill-region
 bindkey '^x' autosuggest-clear
 bindkey '^d' forward-word
 
@@ -78,7 +74,7 @@ alias ll='ls -l'
 alias la='ls -a'
 alias c='clear'
 alias cd='z'
-alias cat='bat'
 alias j='just'
+alias jf='just format'
 
 alias nd="nix --experimental-features 'nix-command flakes' develop --command zsh"
