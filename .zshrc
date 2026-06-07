@@ -68,13 +68,8 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
 # Aliases
-alias ip='ip -c'
-alias ls='ls --color'
 alias ll='ls -l'
 alias la='ls -a'
-alias c='clear'
 alias cd='z'
-alias j='just'
-alias jf='just format'
 
-alias nd="nix --experimental-features 'nix-command flakes' develop --command zsh"
+alias nd="devenv shell"
