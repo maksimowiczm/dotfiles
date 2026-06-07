@@ -11,6 +11,8 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
@@ -55,8 +57,9 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
 # Aliases
-alias ll='ls -l'
-alias la='ls -a'
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -l'
+alias la='ls --color=auto -a'
 alias cd='z'
 
 alias nd="devenv shell"
