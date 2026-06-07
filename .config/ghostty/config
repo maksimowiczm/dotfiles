@@ -27,5 +27,4 @@
 
 confirm-close-surface = false
 font-size = 16
-keybind = ctrl+v=paste_from_clipboard
 shell-integration-features=true
