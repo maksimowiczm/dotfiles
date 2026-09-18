@@ -1,5 +1,7 @@
 { pkgsUnstable, ... }:
 
 {
-  home.packages = with pkgsUnstable; [ android-studio ];
+  home.packages = with pkgsUnstable; [
+    androidStudioPackages.canary
+  ];
 }

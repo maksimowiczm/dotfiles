@@ -9,7 +9,9 @@
     pkg:
     builtins.elem (lib.getName pkg) [
       "vscode"
-      "android-studio"
+      "android-studio-canary"
+      "nvidia-x11"
+      "nvidia-settings"
     ];
 
   nix.settings.experimental-features = [
@@ -49,6 +51,8 @@
     ];
     shell = pkgs.zsh;
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   programs.zsh.enable = true;
 

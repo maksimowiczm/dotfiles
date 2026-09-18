@@ -34,7 +34,7 @@
         Search = true;
         TopSites = true;
         SponsoredTopSites = false;
-        Highlights = true;
+        Highlights = false;
         Pocket = false;
         SponsoredPocket = false;
         Stories = false;

@@ -34,17 +34,30 @@
     };
   };
 
+  time.hardwareClockInLocalTime = true;
+
   networking = {
     hostName = "workstation";
     networkmanager.enable = true;
     firewall.enable = true;
   };
 
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns4 = true;
+  #   openFirewall = true;
+  # };
+
   console.keyMap = "pl2";
 
   environment.systemPackages = with pkgs; [
     sbctl
   ];
+
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;
+  hardware.nvidia.modesetting.enable = true;
 
   system.stateVersion = "26.05";
 }
