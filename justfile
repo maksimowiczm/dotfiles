@@ -1,7 +1,11 @@
 hostname := trim(shell("cat /etc/hostname"))
+user := "mateusz"
 
 default:
     @just --list
+
+home user=user:
+    @nix run github:nix-community/home-manager/release-26.05 -- switch --flake .#{{user}}
 
 switch hostname=hostname:
     @sudo nixos-rebuild switch --flake .#{{hostname}}

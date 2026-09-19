@@ -15,7 +15,6 @@
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs =
@@ -29,6 +28,16 @@
     }:
     let
       system = "x86_64-linux";
+
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (nixpkgs.lib.getName pkg) [
+          "vscode"
+          "android-studio-canary"
+          "nvidia-x11"
+          "nvidia-settings"
+          "jetbrains-toolbox"
+        ];
 
       mkHost =
         hostPath:
@@ -47,7 +56,7 @@
               home-manager.extraSpecialArgs = {
                 pkgsUnstable = import nixpkgs-unstable {
                   inherit system;
-                  config = config.nixpkgs.config;
+                  config.allowUnfreePredicate = allowUnfreePredicate;
                   overlays = config.nixpkgs.overlays;
                 };
               };
@@ -59,6 +68,27 @@
     {
       nixosConfigurations = {
         workstation = mkHost ./hosts/workstation/configuration.nix;
+      };
+
+      homeConfigurations = {
+        mateusz = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+
+            config.allowUnfreePredicate = allowUnfreePredicate;
+          };
+          modules = [
+            ./home/mateusz.nix
+            plasma-manager.homeModules.plasma-manager
+          ];
+
+          extraSpecialArgs = {
+            pkgsUnstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfreePredicate = allowUnfreePredicate;
+            };
+          };
+        };
       };
     };
 }

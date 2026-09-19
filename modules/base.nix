@@ -5,15 +5,6 @@
 }:
 
 {
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "vscode"
-      "android-studio-canary"
-      "nvidia-x11"
-      "nvidia-settings"
-    ];
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
