@@ -4,8 +4,7 @@ return {
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			-- Customize or remove this keymap to your liking
-			"<leader>f",
+			"<leader>cf",
 			function()
 				require("conform").format({ async = true })
 			end,
@@ -16,6 +15,7 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
+			haskell = { "fourmolu" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",

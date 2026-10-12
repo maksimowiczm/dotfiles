@@ -62,4 +62,6 @@ alias ll='ls --color=auto -l'
 alias la='ls --color=auto -a'
 alias cd='z'
 
-alias nd="devenv shell"
+alias nd='nix --extra-experimental-features "nix-command flakes" develop --command zsh'
+
+[ -f "/home/mateusz/.ghcup/env" ] && . "/home/mateusz/.ghcup/env" # ghcup-env
